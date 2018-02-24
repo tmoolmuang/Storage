@@ -12,7 +12,7 @@ namespace Storage.Models
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(15, ErrorMessage = "The name is way too long"), MinLength(4, ErrorMessage = "must be at least 5 characters")]
+        [MaxLength(15, ErrorMessage = "Product name is too long"), MinLength(5, ErrorMessage = "Product name must be at least 5 characters")]
         public string Name { get; set; }
 
         [Required]
@@ -29,13 +29,16 @@ namespace Storage.Models
         [Required]
         public decimal Price { get; set; }
 
+        [Required]
+        public int ProductTypeId { get; set; }
+
+        // constructor to set default value
         public Product()
         {
             IsTaxable = false;
         }
 
-        // navigation property, eager loading related detail info
+        // navigation property, eager loading related product type name
         public ProductType ProductType { get; set; }
-        public int ProductTypeId { get; set; }
     }
 }

@@ -34,6 +34,7 @@ namespace Storage.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             //Product product = _db.Products.Find(id);
+
             var product = _db.Products.Include(path => path.ProductType).Where(p => p.Id == @id).FirstOrDefault<Product>();
             if (product == null)
             {
@@ -45,8 +46,8 @@ namespace Storage.Controllers
         // GET: Storage/Create
         public ActionResult Create()
         {
-            var productType = _db.ProductTypes.ToList();
             var productCreateViewModel = new ProductProductTypeViewModel();
+            var productType = _db.ProductTypes.ToList();
             productCreateViewModel.ProductTypes = productType;
             return View(productCreateViewModel);
         }
@@ -79,17 +80,17 @@ namespace Storage.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var productType = _db.ProductTypes.ToList();
+            var productProductTypeViewModel = new ProductProductTypeViewModel();
             var product = _db.Products.Find(id);
-            var productCreateViewModel = new ProductProductTypeViewModel();
-            productCreateViewModel.ProductTypes = productType;
-            productCreateViewModel.Product = product;
+            var productType = _db.ProductTypes.ToList();
+            productProductTypeViewModel.Product = product;
+            productProductTypeViewModel.ProductTypes = productType;
 
             if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(productCreateViewModel);
+            return View(productProductTypeViewModel);
         }
 
         // POST: Storage/Edit/5
