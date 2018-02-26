@@ -18,10 +18,12 @@ namespace Storage.Models
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name="Stock Date")]
         public DateTime StockDate { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Expire Date")]
         public DateTime? ExpiredDate { get; set; }
 
         public bool IsTaxable { get; set; }
@@ -30,6 +32,7 @@ namespace Storage.Models
         public decimal Price { get; set; }
 
         [Required]
+        [Display(Name = "Product Type")]
         public int ProductTypeId { get; set; }
 
         // constructor to set default value
