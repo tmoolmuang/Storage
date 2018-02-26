@@ -24,6 +24,7 @@ namespace Storage.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Expire Date")]
+        [ValProductDates]
         public DateTime? ExpiredDate { get; set; }
 
         public bool IsTaxable { get; set; }

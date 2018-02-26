@@ -54,17 +54,21 @@ namespace Storage.Controllers
 
         // POST: Storage/Create
         [HttpPost]
-        public ActionResult Create(Product product)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(ProductProductTypeViewModel pp)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _db.Products.Add(product);
+                    _db.Products.Add(pp.Product);
                     _db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                return View(product);
+
+                //fill productypes for re-displaying create form when fail
+                pp.ProductTypes = _db.ProductTypes.ToList();
+                return View(pp);
             }
             catch
             {
@@ -95,17 +99,20 @@ namespace Storage.Controllers
 
         // POST: Storage/Edit/5
         [HttpPost]
-        public ActionResult Edit(Product product)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(ProductProductTypeViewModel pp)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _db.Entry(product).State = System.Data.Entity.EntityState.Modified;
+                    _db.Entry(pp.Product).State = System.Data.Entity.EntityState.Modified;
                     _db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                return View(product);
+                //fill productypes for re-displaying edit form when fail
+                pp.ProductTypes = _db.ProductTypes.ToList();
+                return View(pp);
             }
             catch
             {
@@ -131,6 +138,7 @@ namespace Storage.Controllers
 
         // POST: Storage/Delete/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(Product product)
         {
             //TODO: to be researched further more
