@@ -8,3 +8,6 @@ Demonstrate
 - ViewModel
 - Bootstrap 4.0
 - Bootswatch theme
+- Custom Validation
+- Client-side Validation
+- Anti-forgery Token
