@@ -1,5 +1,5 @@
 # Storage
-ASP.NET MVC5 with EF6 performing basic CRUD. 
+ASP.NET MVC5 with EF6 - performing basic CRUD. 
 
 Demonstrate 
 - Code-first
