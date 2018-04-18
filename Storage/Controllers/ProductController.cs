@@ -39,6 +39,17 @@ namespace Storage.Controllers
             return PartialView(products);
         }
 
+        public ActionResult _delete(int id)
+        {
+            Product product = _db.Products.Find(id);
+            _db.Products.Remove(product);
+            _db.SaveChanges();
+
+            List<Product> products = new List<Product>();
+            products = _db.Products.ToList();
+            return PartialView("_index", products);
+        }
+
         // GET: Storage/Details/5
         public ActionResult Details(int? id)
         {

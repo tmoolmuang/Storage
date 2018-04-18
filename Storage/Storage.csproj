@@ -283,8 +283,8 @@
     <Content Include="Views\ProductType\Create.cshtml" />
     <Content Include="Views\ProductType\Edit.cshtml" />
     <Content Include="Views\ProductType\Delete.cshtml" />
-    <Content Include="Views\Product\AjaxDemo.cshtml" />
     <Content Include="Views\Product\_index.cshtml" />
+    <Content Include="Views\Product\AjaxDemo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

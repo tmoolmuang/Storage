@@ -17,26 +17,38 @@
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
+        <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StockDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExpiredDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsTaxable)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpiredDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsTaxable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Ajax.ActionLink(" ", "_delete", "Product", new { @id = item.Id }, new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       UpdateTargetId = "product_partial",
+                       InsertionMode = InsertionMode.Replace
+                   }, 
+                   new { @class = "btn btn-sm btn-primary fa fa-times" })
+            </td>
+        </tr>
+    }
 </table>
+
+
