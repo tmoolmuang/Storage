@@ -1,7 +1,7 @@
 # Storage
 ASP.NET MVC5 with EF6 - performing basic CRUD. 
 
-Demonstrate 
+Demonstrates 
 - Code-first
 - Database Migrations
 - Eager Loading
@@ -11,3 +11,4 @@ Demonstrate
 - Custom Validation
 - Client-side Validation
 - Anti-forgery Token
+- Ajax call
