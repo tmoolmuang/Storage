@@ -26,6 +26,19 @@ namespace Storage.Controllers
             return View(_db.Products.Include(path => path.ProductType).ToList());
         }
 
+        public ActionResult AjaxDemo()
+        {
+            return View();
+        }
+
+        public ActionResult _index()
+        {
+            List<Product> products = new List<Product>();
+            products = _db.Products.ToList();
+                       
+            return PartialView(products);
+        }
+
         // GET: Storage/Details/5
         public ActionResult Details(int? id)
         {

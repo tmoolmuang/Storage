@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "A_Index";
+}
+
+@Html.Label("Get Products 1", htmlAttributes: new { @class = "showList" })
+<span>|</span>
+@Ajax.ActionLink("Get Products 2", "_index", "Product", new AjaxOptions()
+                            {
+                                HttpMethod = "GET",
+                                UpdateTargetId = "product_partial",
+                                InsertionMode = InsertionMode.Replace
+                            })
+<span>|</span>
+@Ajax.ActionLink("Get Products 3", "_index", "Product", new AjaxOptions()
+                            {
+                                HttpMethod = "GET",
+                                UpdateTargetId = "product_partial",
+                                InsertionMode = InsertionMode.Replace
+                            }, new { @class = "btn btn-sm btn-primary" })
+<span>|</span>
+@Ajax.ActionLink(" ", "_index", "Product", new AjaxOptions()
+                            {
+                                HttpMethod = "GET",
+                                UpdateTargetId = "product_partial",
+                                InsertionMode = InsertionMode.Replace
+                            }, new { @class = "btn btn-primary fa fa-plus" })
+
+<div id="product_partial"></div>
+
+<script>
+    $('.showList').click(function (e) {
+        $.ajax({
+            type: "GET",
+            url: "/Product/_index",
+            success: function (data) {
+                $('#product_partial').html(data);
+            },
+            error: function () {
+                alert("Something is wrong!");
+            }
+        });
+    });
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+
+
